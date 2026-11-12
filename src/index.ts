@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db';
+import authRoutes from './routes/auth.routes';
 
 dotenv.config();
 
@@ -15,10 +16,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [CLIENT_URL],
+    origin: [CLIENT_URL, 'http://localhost:3000'],
     credentials: true,
   })
 );
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 // Health check endpoint
 app.get('/', (req: Request, res: Response) => {
