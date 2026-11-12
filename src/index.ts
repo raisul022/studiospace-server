@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db';
 import authRoutes from './routes/auth.routes';
+import studioRoutes from './routes/studio.routes';
+import bookingRoutes from './routes/booking.routes';
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.use(
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/studios', studioRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 // Health check endpoint
 app.get('/', (req: Request, res: Response) => {
