@@ -12,6 +12,9 @@ export interface AuthUser {
 
 export interface AuthenticatedRequest extends Request {
   user?: AuthUser;
+  cookies: any;
+  body: any;
+  params: any;
 }
 
 export const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {

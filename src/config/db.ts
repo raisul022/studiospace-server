@@ -10,7 +10,7 @@ export const client = new MongoClient(uri, {
     strict: true,
     deprecationErrors: true,
   },
-});
+} as any);
 
 let db: Db | null = null;
 
